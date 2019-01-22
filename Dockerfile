@@ -1,8 +1,6 @@
 FROM phusion/baseimage:0.11 AS builder
 LABEL maintainer="Sajib Sarkar"
 
-COPY ./somaxconn /proc/sys/net/core/somaxconn
-
 ENTRYPOINT ["/sbin/my_init"]
 COPY  ./sysctl.conf /etc/sysctl.conf
 
@@ -40,6 +38,8 @@ RUN make install .
 RUN ls
 WORKDIR ./utils
 RUN ./install_server.sh
+
+COPY ./somaxconn /proc/sys/net/core/somaxconn
 
 WORKDIR /
 
