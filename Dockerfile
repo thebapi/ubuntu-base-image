@@ -39,4 +39,6 @@ RUN ls
 WORKDIR ./utils
 RUN ./install_server.sh
 
+WORKDIR /
+
 CMD ["redis-server"]
