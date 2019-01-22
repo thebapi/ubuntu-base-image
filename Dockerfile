@@ -27,6 +27,16 @@ COPY  sysfs.conf /etc/sysfs.conf
 
 CMD ["/sbin/my_init"]
 
-RUN apt-get install -y redis-server libhiredis-dev
+## Install Redis.
+#run apt-get install -y redis-server libhiredis-dev
+RUN wget http://download.redis.io/releases/redis-5.0.3.tar.gz
+RUN tar xzf redis-5.0.3.tar.gz
+RUN ls
+RUN cd redis-5.0.3
+#run make
+RUN make install
+RUN ls
+RUN cd ./utils
+RUN ./install_server.sh
 
-CMD ['redis-server']
+CMD ["redis-server"]
