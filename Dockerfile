@@ -32,11 +32,11 @@ CMD ["/sbin/my_init"]
 RUN wget http://download.redis.io/releases/redis-5.0.3.tar.gz
 RUN tar xzf redis-5.0.3.tar.gz
 RUN ls
-RUN cd redis-5.0.3
+WORKDIR redis-5.0.3
 #run make
 RUN make .
 RUN ls
-RUN cd ./utils
+WORKDIR ./utils
 RUN ./install_server.sh
 
 CMD ["redis-server"]
