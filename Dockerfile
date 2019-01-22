@@ -27,4 +27,6 @@ COPY  sysfs.conf /etc/sysfs.conf
 
 CMD ["/sbin/my_init"]
 
-#CMD date
+RUN apt-get install -y redis-server libhiredis-dev
+
+CMD ['redis-server']
