@@ -16,6 +16,7 @@ RUN apt-get update && \
   g++ \
   gcc \
   wget \
+  sudo \
   libc6-dev \
   sysfsutils \
   make \
