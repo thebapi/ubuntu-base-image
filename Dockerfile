@@ -27,4 +27,4 @@ COPY  sysfs.conf /etc/sysfs.conf
 
 CMD ["/sbin/my_init"]
 
-CMD date
+#CMD date
