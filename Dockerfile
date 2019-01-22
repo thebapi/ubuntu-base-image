@@ -18,7 +18,7 @@ RUN apt-get update && \
   gcc \
   wget \
   libc6-dev \
-  sysfsutils -N \
+  sysfsutils --configure -N \
   make \
   && rm -rf /var/lib/apt/lists/*
 
