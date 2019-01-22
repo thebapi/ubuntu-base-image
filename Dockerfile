@@ -1,7 +1,6 @@
 FROM phusion/baseimage:0.11 AS builder
 LABEL maintainer="Sajib Sarkar"
 
-ENTRYPOINT ["/sbin/my_init"]
 COPY  ./sysctl.conf /etc/sysctl.conf
 
 
