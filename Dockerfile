@@ -34,7 +34,7 @@ RUN tar xzf redis-5.0.3.tar.gz
 RUN ls
 RUN cd redis-5.0.3
 #run make
-RUN make install
+RUN make
 RUN ls
 RUN cd ./utils
 RUN ./install_server.sh
