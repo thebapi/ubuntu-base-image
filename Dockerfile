@@ -48,4 +48,7 @@ WORKDIR /
 
 
 RUN rm -rf /var/lib/apt/lists/*
+
+RUN sysctl net.core.somaxconn
+
 CMD ["redis-server"]
