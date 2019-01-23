@@ -23,7 +23,7 @@ RUN apt-get update && \
   libc6-dev \
   make
 
-RUN Su -
+#RUN Su -
 RUN usermod -aG sudo root
 
 RUN sudo sysctl -w fs.file-max=100000
