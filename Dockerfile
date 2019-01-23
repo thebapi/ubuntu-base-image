@@ -8,7 +8,7 @@ RUN mkdir -p /etc/my_init.d
 #COPY logtime.sh /etc/my_init.d/logtime.sh
 #RUN chmod +x /etc/my_init.d/logtime.sh
 
-COPY  sysfs.conf /etc/sysfs.conf
+#COPY  sysfs.conf /etc/sysfs.conf
 
 
 RUN cd $HOME
