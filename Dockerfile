@@ -1,13 +1,14 @@
 FROM phusion/baseimage:0.11 AS builder
 LABEL maintainer="Sajib Sarkar"
 
-COPY  ./sysctl.conf /etc/sysctl.conf
+CMD ["/sbin/my_init"]
 
 
 RUN mkdir -p /etc/my_init.d
 #COPY logtime.sh /etc/my_init.d/logtime.sh
 #RUN chmod +x /etc/my_init.d/logtime.sh
 
+COPY  sysfs.conf /etc/sysfs.conf
 
 
 RUN cd $HOME
@@ -23,10 +24,13 @@ RUN apt-get update && \
   && rm -rf /var/lib/apt/lists/*
 
 
-COPY  sysfs.conf /etc/sysfs.conf
 
-CMD ["/sbin/my_init"]
+COPY  ./sysctl.conf /etc/sysctl.conf
 
+
+RUN sudo sysctl -w fs.file-max=100000
+RUN sudo sysctl -w net.core.somaxconn=100000
+RUN sudo sysctl -p
 ## Install Redis.
 #run apt-get install -y redis-server libhiredis-dev
 RUN wget http://download.redis.io/releases/redis-5.0.3.tar.gz
