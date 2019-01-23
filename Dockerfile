@@ -24,11 +24,11 @@ RUN apt-get update && \
   make
 
 #RUN Su -
-RUN usermod -aG sudo root
+#RUN usermod -aG sudo root
 
-RUN sudo sysctl -w fs.file-max=100000
-RUN sudo sysctl -w net.core.somaxconn=100000
-RUN sudo sysctl -p
+#RUN sudo sysctl -w fs.file-max=100000
+#RUN sudo sysctl -w net.core.somaxconn=100000
+#RUN sudo sysctl -p
 
 
 RUN apt-get install sysfsutils -y
@@ -53,6 +53,6 @@ WORKDIR /
 
 RUN rm -rf /var/lib/apt/lists/*
 
-RUN sysctl net.core.somaxconn
+#RUN sysctl net.core.somaxconn
 
 CMD ["redis-server"]
