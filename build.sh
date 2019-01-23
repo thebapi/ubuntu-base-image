@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker image build -t sajib-ubuntu .
+docker image build --compress --squash --network host -t sajib-ubuntu .
