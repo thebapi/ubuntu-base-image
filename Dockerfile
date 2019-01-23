@@ -19,14 +19,13 @@ RUN apt-get update && \
   wget \
   sudo \
   libc6-dev \
-  sysfsutils \
-  make \
-  && rm -rf /var/lib/apt/lists/*
+  make
 
 
 
 COPY  ./sysctl.conf /etc/sysctl.conf
 
+RUN apt-get install sysfsutils -N
 
 RUN sudo sysctl -w fs.file-max=100000
 RUN sudo sysctl -w net.core.somaxconn=100000
@@ -47,4 +46,6 @@ COPY ./somaxconn /proc/sys/net/core/somaxconn
 
 WORKDIR /
 
+
+RUN rm -rf /var/lib/apt/lists/*
 CMD ["redis-server"]
