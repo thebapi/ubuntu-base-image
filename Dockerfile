@@ -11,7 +11,7 @@ RUN mkdir -p /etc/my_init.d
 
 #COPY  sysfs.conf /etc/sysfs.conf
 COPY  ./sysctl.conf /etc/sysctl.conf
-
+COPY ./60-net.conf /etc/sysctl.d/60-net.conf
 
 RUN cd $HOME
 RUN apt-get update && \
@@ -31,7 +31,7 @@ RUN apt-get update && \
 #RUN sudo sysctl -p
 
 
-RUN apt-get install sysfsutils -y
+#RUN apt-get install sysfsutils -y
 
 
 ## Install Redis.
