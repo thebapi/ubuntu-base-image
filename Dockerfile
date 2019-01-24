@@ -12,6 +12,7 @@ RUN mkdir -p /etc/my_init.d
 #COPY  sysfs.conf /etc/sysfs.conf
 COPY  ./sysctl.conf /etc/sysctl.conf
 COPY ./60-net.conf /etc/sysctl.d/60-net.conf
+COPY ./1-net.conf /etc/sysctl.d/1-net.conf
 
 RUN cd $HOME
 RUN apt-get update && \
