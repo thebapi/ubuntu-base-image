@@ -2,10 +2,6 @@ FROM phusion/baseimage:0.11 AS builder
 LABEL maintainer="Sajib Sarkar"
 LABEL maintainer_email="thebapi@gmail.com"
 
-CMD ["/sbin/my_init"]
-
-
-
 RUN mkdir -p /etc/my_init.d
 #COPY logtime.sh /etc/my_init.d/logtime.sh
 #RUN chmod +x /etc/my_init.d/logtime.sh
@@ -42,6 +38,4 @@ ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
 WORKDIR /
 
-#RUN sysctl net.core.somaxconn
-
-CMD ["redis-server"]
+CMD ["/sbin/my_init"]
