@@ -12,7 +12,7 @@ COPY ./99-net.conf /etc/sysctl.d/99-net.conf
 COPY ./1-net.conf /etc/sysctl.d/1-net.conf
 
 RUN cd $HOME
-RUN apt-get update && apt-get -y upgrade  && \
+RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"  && \
   apt-get install -y --install-recommends \
   g++ \
   gcc \
