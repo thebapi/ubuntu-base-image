@@ -31,6 +31,9 @@ RUN \
   mkdir -p /goroot && \
   curl https://dl.google.com/go/go1.11.5.linux-amd64.tar.gz | tar xvzf - -C /goroot --strip-components=1
 
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 # Set environment variables.
 ENV GOROOT /goroot
 ENV GOPATH /gopath
@@ -38,9 +41,6 @@ ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
 
 WORKDIR /
-
-
-RUN rm -rf /var/lib/apt/lists/*
 
 #RUN sysctl net.core.somaxconn
 
