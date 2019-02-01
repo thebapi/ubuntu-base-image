@@ -16,7 +16,7 @@ COPY ./99-net.conf /etc/sysctl.d/99-net.conf
 COPY ./1-net.conf /etc/sysctl.d/1-net.conf
 
 RUN cd $HOME
-RUN apt-get update && apt-get upgrade  && \
+RUN apt-get update && apt-get -y upgrade  && \
   apt-get install -y --install-recommends \
   g++ \
   gcc \
