@@ -22,6 +22,7 @@ RUN apt-get update && \
   gcc \
   wget \
   python3.6 \
+  git \
   sudo \
   libc6-dev \
   make
@@ -36,31 +37,6 @@ ENV GOROOT /goroot
 ENV GOPATH /gopath
 ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
-
-#RUN Su -
-#RUN usermod -aG sudo root
-
-#RUN sudo sysctl -w fs.file-max=100000
-#RUN sudo sysctl -w net.core.somaxconn=100000
-#RUN sudo sysctl -p
-
-
-#RUN apt-get install sysfsutils -y
-
-
-## Install Redis.
-#run apt-get install -y redis-server libhiredis-dev
-RUN wget http://download.redis.io/releases/redis-5.0.3.tar.gz
-RUN tar xzf redis-5.0.3.tar.gz
-RUN ls
-WORKDIR redis-5.0.3
-#run make
-RUN make install .
-RUN ls
-WORKDIR ./utils
-RUN ./install_server.sh
-
-COPY ./somaxconn /proc/sys/net/core/somaxconn
 
 WORKDIR /
 
