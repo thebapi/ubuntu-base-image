@@ -38,4 +38,4 @@ ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
 WORKDIR /
 
-CMD ["/sbin/my_init"]
+ENTRYPOINT ["/sbin/my_init"]
