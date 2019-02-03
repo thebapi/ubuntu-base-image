@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker container run   -i   -t sajib-ubuntu:latest  /bin/bash
+docker container run   -i   -t thebapi/ubuntu-base:latest  /bin/bash
