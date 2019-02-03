@@ -4,7 +4,8 @@ LABEL maintainer_email="thebapi@gmail.com"
 
 ADD . /pd_build
 
-
+COPY ./somaxconn /proc/sys/net/core/somaxconn
+COPY  ./sysctl.conf /etc/sysctl.conf
 RUN mkdir -p /etc/my_init.d
 #COPY logtime.sh /etc/my_init.d/logtime.sh
 #RUN chmod +x /etc/my_init.d/logtime.sh
