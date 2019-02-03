@@ -2,6 +2,9 @@ FROM phusion/baseimage:0.11 AS builder
 LABEL maintainer="Sajib Sarkar"
 LABEL maintainer_email="thebapi@gmail.com"
 
+ADD . /pd_build
+
+
 RUN mkdir -p /etc/my_init.d
 #COPY logtime.sh /etc/my_init.d/logtime.sh
 #RUN chmod +x /etc/my_init.d/logtime.sh
@@ -12,30 +15,22 @@ COPY ./99-net.conf /etc/sysctl.d/99-net.conf
 COPY ./1-net.conf /etc/sysctl.d/1-net.conf
 
 RUN cd $HOME
-RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"  && \
-  apt-get install -y --install-recommends \
-  g++ \
-  gcc \
-  wget \
-  git \
-  sudo \
-  libc6-dev \
-  make
-
-# Install Go
-RUN \
-  mkdir -p /goroot && \
-  curl https://dl.google.com/go/go1.11.5.linux-amd64.tar.gz | tar xvzf - -C /goroot --strip-components=1
 
 
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+
+
+
+
+WORKDIR /
+
+RUN /pd_build/install.sh
+
+
 
 # Set environment variables.
 ENV GOROOT /goroot
 ENV GOPATH /gopath
 ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
-
-
-WORKDIR /
 
 ENTRYPOINT ["/sbin/my_init"]
